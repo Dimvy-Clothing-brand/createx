@@ -772,7 +772,7 @@ Please note that when you configure a permissioned deploy protection, you **must
 
 Furthermore, you can configure _only_ cross-chain redeploy protection by setting the first 20 bytes equal to the zero address `0x0000000000000000000000000000000000000000`. The rationale behind this logic is to prevent a pseudo-randomly generated 32 byte salt from inadvertently activating cross-chain redeploy protection. Also in this case, if you don't specify a cross-chain redeploy protection, i.e. the 21st byte is greater than `0x01`, the function reverts. The underlying reason for this logic is as well to enforce developer explicitness.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > When using the read-only functions [`computeCreate2Address(bytes32,bytes32)`](https://github.com/pcaversaccio/createx/blob/main/src/CreateX.sol#L600-L610) or [`computeCreate3Address(bytes32)`](https://github.com/pcaversaccio/createx/blob/main/src/CreateX.sol#L857-L867), it is essential to provide the _guarded_ `salt` value, meaning the value after being processed by the `_guard` function, as the input parameter. This ensures the correct computation of the deployment address. For more details, refer to [this issue](https://github.com/pcaversaccio/createx/issues/140).
 
 ### Pseudo-Random Salt Value
@@ -876,7 +876,7 @@ CreateX_Guard_Internal_Test
 
 ### Test Coverage
 
-This project repository uses [`forge coverage`](https://book.getfoundry.sh/reference/forge/forge-coverage). Simply run:
+This project repository uses [`forge coverage`](https://getfoundry.sh/forge/reference/forge-coverage/). Simply run:
 
 ```console
 forge coverage
@@ -2097,7 +2097,7 @@ We offer two options for deploying [`CreateX`](./src/CreateX.sol) to your desire
 >
 > The _default_ pre-signed transaction has a gas limit of 3,000,000 gas, so if the target chain requires more than 3 million gas to deploy, the contract creation transaction will revert and we will not be able to deploy [`CreateX`](./src/CreateX.sol) to the address `0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed`. In this case, the only way to get [`CreateX`](./src/CreateX.sol) deployed at the expected address is for the chain to store the contract there as a predeploy.
 >
-> If you are not sure how to validate this, you can either use the [`eth_estimateGas`](https://ethereum.github.io/execution-apis/api-documentation/) JSON-RPC method or simply deploy the [`CreateX`](./src/CreateX.sol) contract from another account and see how much gas is needed for the deployment. Standard EVM chains should require exactly 2,580,902 gas to deploy [`CreateX`](./src/CreateX.sol).
+> If you are not sure how to validate this, you can either use the [`eth_estimateGas`](https://ethereum.github.io/execution-apis/docs/reference/eth_estimategas/) JSON-RPC method or simply deploy the [`CreateX`](./src/CreateX.sol) contract from another account and see how much gas is needed for the deployment. Standard EVM chains should require exactly 2,580,902 gas to deploy [`CreateX`](./src/CreateX.sol).
 
 We repeat: PLEASE DO NOT BROADCAST ANY PRE-SIGNED TRANSACTION WITHOUT LOCAL TESTING! Also, before deploying, you MUST send at least 0.3 ETH to the deployer address `0xeD456e05CaAb11d66C4c797dD6c1D6f9A7F352b5`. We offer three pre-signed, pre-[`EIP-155`](https://eips.ethereum.org/EIPS/eip-155) transactions with the same gas price of 100 gwei, but different `gasLimit` levels:
 
@@ -2105,7 +2105,7 @@ We repeat: PLEASE DO NOT BROADCAST ANY PRE-SIGNED TRANSACTION WITHOUT LOCAL TEST
 - _Medium Case:_ `gasLimit = 25_000_000`; [`signed_serialised_transaction_gaslimit_25000000_.json`](./scripts/presigned-createx-deployment-transactions/signed_serialised_transaction_gaslimit_25000000_.json),
 - _Heavy Case:_ `gasLimit = 45_000_000`; [`signed_serialised_transaction_gaslimit_45000000_.json`](./scripts/presigned-createx-deployment-transactions/signed_serialised_transaction_gaslimit_45000000_.json).
 
-You can broadcast the transaction using either [`ethers.js`](https://docs.ethers.org/v6/) or [`cast`](https://book.getfoundry.sh/reference/cli/cast):
+You can broadcast the transaction using either [`ethers.js`](https://docs.ethers.org/v6/) or [`cast`](https://getfoundry.sh/cast/overview/):
 
 #### [`ethers.js`](https://docs.ethers.org/v6/)
 
@@ -2133,7 +2133,7 @@ npx hardhat run --no-compile --network <NETWORK_NAME> scripts/deploy.ts
 
 The [`deploy.ts`](./scripts/deploy.ts) script ensures that [`CreateX`](./src/CreateX.sol) is automatically verified if you have configured the `etherscan` property accordingly. The current script broadcasts the _default_ pre-signed transaction, which has a gas limit of 3,000,000 gas. If you want to use a different pre-signed transaction, you must change the import of the pre-signed transaction in the [`deploy.ts`](./scripts/deploy.ts) script.
 
-#### [`cast`](https://book.getfoundry.sh/reference/cli/cast)
+#### [`cast`](https://getfoundry.sh/cast/overview/)
 
 It is recommended to install [Foundry](https://github.com/foundry-rs/foundry) via:
 
@@ -2184,8 +2184,8 @@ To verify a deployed [`CreateX`](./src/CreateX.sol) contract on a block explorer
 - [Arbitrum Nova](https://nova.arbiscan.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Polygon](https://polygonscan.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Polygon zkEVM](https://zkevm.polygonscan.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
-- [Fantom](https://ftmscan.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
-- [Avalanche](https://snowtrace.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Fantom](https://explorer.fantom.network/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Avalanche](https://snowscan.xyz/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Gnosis Chain](https://gnosisscan.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Moonriver](https://moonriver.moonscan.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Moonbeam](https://moonbeam.moonscan.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
@@ -2212,7 +2212,8 @@ To verify a deployed [`CreateX`](./src/CreateX.sol) contract on a block explorer
 - [Kava](https://kavascan.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Metis Andromeda](https://andromeda-explorer.metis.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Mode](https://explorer.mode.network/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
-- [X Layer](https://www.oklink.com/xlayer/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Sei](https://seitrace.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed?chain=pacific-1)
+- [X Layer](https://www.oklink.com/x-layer/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [BOB](https://explorer.gobob.xyz/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Core](https://scan.coredao.org/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Telos](https://www.teloscan.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
@@ -2224,8 +2225,8 @@ To verify a deployed [`CreateX`](./src/CreateX.sol) contract on a block explorer
 - [ZetaChain](https://explorer.zetachain.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [5ireChain](https://5irescan.io/contract/evm/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Oasis Sapphire](https://explorer.oasis.io/mainnet/sapphire/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
-- [World Chain](https://worldchain-mainnet.explorer.alchemy.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
-- [Plume](https://phoenix-explorer.plumenetwork.xyz/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [World Chain](https://worldscan.org/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Plume](https://explorer.plume.org/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Unichain](https://uniscan.xyz/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [XDC Network](https://xdcscan.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [SX Network](https://explorerl2.sx.technology/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
@@ -2246,11 +2247,21 @@ To verify a deployed [`CreateX`](./src/CreateX.sol) contract on a block explorer
 - [Arena-Z](https://explorer.arena-z.gg/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [IoTeX](https://iotexscan.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [HYCHAIN](https://explorer.hychain.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Zircuit](https://explorer.zircuit.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Bitlayer](https://www.btrscan.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Ronin](https://app.roninchain.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [ZKsync Era](https://era.zksync.network/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Immutable zkEVM](https://explorer.immutable.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Abstract](https://abscan.org/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [HyperEVM](https://purrsec.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Kaia](https://kaiascope.com/account/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [ApeChain](https://apescan.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 
 #### Ethereum Test Networks
 
 - [Sepolia](https://sepolia.etherscan.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Holešky (Holešovice)](https://holesky.etherscan.io/address/0xba5ed099633d3b313e4d5f7bdc1305d3c28ba5ed)
+- [Hoodi](https://hoodi.etherscan.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 
 #### Additional EVM-Based Test Networks
 
@@ -2259,8 +2270,8 @@ To verify a deployed [`CreateX`](./src/CreateX.sol) contract on a block explorer
 - [Arbitrum Sepolia Testnet](https://sepolia.arbiscan.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Polygon Sepolia Testnet (Amoy)](https://amoy.polygonscan.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Polygon Testnet (zkEVM)](https://cardona-zkevm.polygonscan.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
-- [Fantom Testnet](https://testnet.ftmscan.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
-- [Avalanche Testnet (Fuji)](https://testnet.snowtrace.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Fantom Testnet](https://explorer.testnet.fantom.network/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Avalanche Testnet (Fuji)](https://testnet.snowscan.xyz/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Gnosis Chain Testnet (Chiado)](https://gnosis-chiado.blockscout.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Moonbeam Testnet (Moonbase Alpha)](https://moonbase.moonscan.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Celo Testnet (Alfajores)](https://alfajores.celoscan.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
@@ -2284,8 +2295,9 @@ To verify a deployed [`CreateX`](./src/CreateX.sol) contract on a block explorer
 - [Fraxtal Holešky Testnet](https://holesky.fraxscan.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Metis Sepolia Testnet](https://sepolia-explorer.metisdevops.link/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Mode Sepolia Testnet](https://sepolia.explorer.mode.network/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
-- [Sei Arctic Testnet](https://seistream.app/account/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
-- [X Layer Sepolia Testnet](https://www.oklink.com/xlayer-test/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Sei Arctic Devnet](https://seitrace.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed?chain=arctic-1)
+- [Sei Atlantic Testnet](https://seitrace.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed?chain=atlantic-2)
+- [X Layer Sepolia Testnet](https://www.oklink.com/x-layer-testnet/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [BOB Sepolia Testnet](https://testnet-explorer.gobob.xyz/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Core Testnet](https://scan.test.btcs.network/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Telos Testnet](https://testnet.teloscan.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
@@ -2296,30 +2308,39 @@ To verify a deployed [`CreateX`](./src/CreateX.sol) contract on a block explorer
 - [ZetaChain Testnet (Athens-3)](https://athens.explorer.zetachain.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [5ireChain Testnet](https://testnet.5irescan.io/contract/evm/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Oasis Sapphire Testnet](https://explorer.oasis.io/testnet/sapphire/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
-- [World Chain Sepolia Testnet](https://worldchain-sepolia.explorer.alchemy.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
-- [Plume Sepolia Testnet](https://test-explorer.plumenetwork.xyz/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [World Chain Sepolia Testnet](https://sepolia.worldscan.org/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Plume Sepolia Testnet](https://testnet-explorer.plume.org/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Unichain Sepolia Testnet](https://sepolia.uniscan.xyz/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [XDC Network Testnet (Apothem)](https://testnet.xdcscan.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [SX Network Sepolia Testnet (Toronto)](https://explorerl2.toronto.sx.technology/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Lisk Sepolia Testnet](https://sepolia-blockscout.lisk.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Metal L2 Sepolia Testnet](https://testnet.explorer.metall2.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Superseed Sepolia Testnet](https://sepolia-explorer.superseed.xyz/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
-- [Story Testnet (Aeneid)](https://aeneid.storyscan.xyz/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Story Testnet (Aeneid)](https://aeneid.storyscan.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Sonic Testnet (Blaze)](https://testnet.sonicscan.org/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [EVM on Flow Testnet](https://evm-testnet.flowscan.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Ink Sepolia Testnet](https://explorer-sepolia.inkonchain.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Morph Holešky Testnet](https://explorer-holesky.morphl2.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
-- [Shape Sepolia Testnet](https://explorer-sepolia.shape.network/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Shape Sepolia Testnet](https://sepolia.shapescan.xyz/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Etherlink Testnet (Ghostnet)](https://testnet.explorer.etherlink.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Soneium Sepolia Testnet (Minato)](https://soneium-minato.blockscout.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Swellchain Sepolia Testnet](https://swell-testnet-explorer.alt.technology/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Hemi Sepolia Testnet](https://testnet.explorer.hemi.xyz/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
-- [Berachain Testnet (bArtio)](https://bartio.beratrail.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Berachain Testnet (Bepolia)](https://testnet.berascan.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Monad Testnet](https://testnet.monadexplorer.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Corn Sepolia Testnet](https://testnet.cornscan.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [Arena-Z Sepolia Testnet](https://arena-z.blockscout.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [IoTeX Testnet](https://testnet.iotexscan.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 - [HYCHAIN Testnet](https://testnet.explorer.hychain.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Zircuit Sepolia Testnet (Garfield)](https://explorer.garfield-testnet.zircuit.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [MegaETH Testnet](https://www.megaexplorer.xyz/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Bitlayer Testnet](https://testnet-scan.bitlayer.org/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Ronin Testnet (Saigon)](https://saigon-app.roninchain.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [ZKsync Era Sepolia Testnet](https://sepolia-era.zksync.network/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Immutable zkEVM Sepolia Testnet](https://explorer.testnet.immutable.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [Abstract Sepolia Testnet](https://sepolia.abscan.org/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [HyperEVM Testnet](https://testnet.purrsec.com/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
+- [ApeChain Sepolia Testnet (Curtis)](https://curtis.apescan.io/address/0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed)
 
 ## Integration With External Tooling
 

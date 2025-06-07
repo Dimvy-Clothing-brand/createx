@@ -93,6 +93,14 @@ const config: HardhatUserConfig = {
       ),
       accounts,
     },
+    hoodi: {
+      chainId: 560048,
+      url: vars.get(
+        "ETH_HOODI_TESTNET_URL",
+        "https://rpc.hoodi.ethpandaops.io",
+      ),
+      accounts,
+    },
     ethMain: {
       chainId: 1,
       url: ethMainnetUrl,
@@ -527,9 +535,19 @@ const config: HardhatUserConfig = {
       url: vars.get("MODE_MAINNET_URL", "https://mainnet.mode.network"),
       accounts,
     },
-    seiTestnet: {
+    seiDevnet: {
       chainId: 713715,
-      url: vars.get("SEI_TESTNET_URL", "https://evm-rpc-arctic-1.sei-apis.com"),
+      url: vars.get("SEI_DEVNET_URL", "https://evm-rpc-arctic-1.sei-apis.com"),
+      accounts,
+    },
+    seiTestnet: {
+      chainId: 1328,
+      url: vars.get("SEI_TESTNET_URL", "https://evm-rpc-testnet.sei-apis.com"),
+      accounts,
+    },
+    seiMain: {
+      chainId: 1329,
+      url: vars.get("SEI_MAINNET_URL", "https://evm-rpc.sei-apis.com"),
       accounts,
     },
     xlayerTestnet: {
@@ -681,16 +699,13 @@ const config: HardhatUserConfig = {
       accounts,
     },
     plumeTestnet: {
-      chainId: 98864,
-      url: vars.get("PLUME_TESTNET_URL", "https://test-rpc.plumenetwork.xyz"),
+      chainId: 98867,
+      url: vars.get("PLUME_TESTNET_URL", "https://testnet-rpc.plume.org"),
       accounts,
     },
     plumeMain: {
       chainId: 98866,
-      url: vars.get(
-        "PLUME_MAINNET_URL",
-        "https://phoenix-rpc.plumenetwork.xyz",
-      ),
+      url: vars.get("PLUME_MAINNET_URL", "https://rpc.plume.org"),
       accounts,
     },
     unichainTestnet: {
@@ -870,8 +885,11 @@ const config: HardhatUserConfig = {
       accounts,
     },
     berachainTestnet: {
-      chainId: 80084,
-      url: vars.get("BERACHAIN_TESTNET_URL", "https://bartio.drpc.org"),
+      chainId: 80069,
+      url: vars.get(
+        "BERACHAIN_TESTNET_URL",
+        "https://bepolia.rpc.berachain.com",
+      ),
       accounts,
     },
     berachainMain: {
@@ -930,6 +948,114 @@ const config: HardhatUserConfig = {
       url: vars.get("HYCHAIN_MAINNET_URL", "https://rpc.hychain.com/http"),
       accounts,
     },
+    zircuitTestnet: {
+      chainId: 48898,
+      url: vars.get(
+        "ZIRCUIT_TESTNET_URL",
+        "https://garfield-testnet.zircuit.com",
+      ),
+      accounts,
+    },
+    zircuitMain: {
+      chainId: 48900,
+      url: vars.get("ZIRCUIT_MAINNET_URL", "https://zircuit-mainnet.drpc.org"),
+      accounts,
+    },
+    megaETHTestnet: {
+      chainId: 6342,
+      url: vars.get("MEGAETH_TESTNET_URL", "https://carrot.megaeth.com/rpc"),
+      accounts,
+    },
+    bitlayerTestnet: {
+      chainId: 200810,
+      url: vars.get("BITLAYER_TESTNET_URL", "https://testnet-rpc.bitlayer.org"),
+      accounts,
+    },
+    bitlayerMain: {
+      chainId: 200901,
+      url: vars.get("BITLAYER_MAINNET_URL", "https://rpc.bitlayer.org"),
+      accounts,
+    },
+    roninTestnet: {
+      chainId: 2021,
+      url: vars.get(
+        "RONIN_TESTNET_URL",
+        "https://saigon-testnet.roninchain.com/rpc",
+      ),
+      accounts,
+    },
+    roninMain: {
+      chainId: 2020,
+      url: vars.get("RONIN_MAINNET_URL", "https://api.roninchain.com/rpc"),
+      accounts,
+    },
+    zkSyncTestnet: {
+      chainId: 300,
+      url: vars.get("ZKSYNC_TESTNET_URL", "https://sepolia.era.zksync.dev"),
+      accounts,
+    },
+    zkSyncMain: {
+      chainId: 324,
+      url: vars.get("ZKSYNC_MAINNET_URL", "https://mainnet.era.zksync.io"),
+      accounts,
+    },
+    immutableZkEVMTestnet: {
+      chainId: 13473,
+      url: vars.get(
+        "IMMUTABLEZKEVM_TESTNET_URL",
+        "https://rpc.testnet.immutable.com",
+      ),
+      accounts,
+    },
+    immutableZkEVMMain: {
+      chainId: 13371,
+      url: vars.get("IMMUTABLEZKEVM_MAINNET_URL", "https://rpc.immutable.com"),
+      accounts,
+    },
+    abstractTestnet: {
+      chainId: 11124,
+      url: vars.get("ABSTRACT_TESTNET_URL", "https://api.testnet.abs.xyz"),
+      accounts,
+    },
+    abstractMain: {
+      chainId: 2741,
+      url: vars.get("ABSTRACT_MAINNET_URL", "https://api.mainnet.abs.xyz"),
+      accounts,
+    },
+    hyperevmTestnet: {
+      chainId: 998,
+      url: vars.get(
+        "HYPEREVM_TESTNET_URL",
+        "https://rpc.hyperliquid-testnet.xyz/evm",
+      ),
+      accounts,
+    },
+    hyperevmMain: {
+      chainId: 999,
+      url: vars.get("HYPEREVM_MAINNET_URL", "https://rpc.hyperliquid.xyz/evm"),
+      accounts,
+    },
+    kaiaMain: {
+      chainId: 8217,
+      url: vars.get("KAIA_MAINNET_URL", "https://rpc.ankr.com/kaia"),
+      accounts,
+    },
+    apeChainTestnet: {
+      chainId: 33111,
+      url: vars.get(
+        "APECHAIN_TESTNET_URL",
+        "https://curtis.rpc.caldera.xyz/http",
+      ),
+      accounts,
+    },
+    apeChainMain: {
+      chainId: 33139,
+      url: vars.get(
+        "APECHAIN_MAINNET_URL",
+        "https://apechain.calderachain.xyz/http",
+      ),
+      accounts,
+    },
   },
   contractSizer: {
     alphaSort: true,
@@ -964,6 +1090,7 @@ const config: HardhatUserConfig = {
       goerli: vars.get("ETHERSCAN_API_KEY", ""),
       sepolia: vars.get("ETHERSCAN_API_KEY", ""),
       holesky: vars.get("ETHERSCAN_API_KEY", ""),
+      hoodi: vars.get("ETHERSCAN_API_KEY", ""),
       // For BSC testnet & mainnet
       bsc: vars.get("BSC_API_KEY", ""),
       bscTestnet: vars.get("BSC_API_KEY", ""),
@@ -1174,6 +1301,26 @@ const config: HardhatUserConfig = {
       // For HYCHAIN testnet & mainnet
       hychain: vars.get("HYCHAIN_API_KEY", ""),
       hychainTestnet: vars.get("HYCHAIN_API_KEY", ""),
+      // For Zircuit testnet & mainnet
+      zircuit: vars.get("ZIRCUIT_API_KEY", ""),
+      zircuitTestnet: vars.get("ZIRCUIT_API_KEY", ""),
+      // For Bitlayer testnet & mainnet
+      bitlayer: vars.get("BITLAYER_API_KEY", ""),
+      bitlayerTestnet: vars.get("BITLAYER_API_KEY", ""),
+      // For ZKsync testnet & mainnet
+      zkSync: vars.get("ZKSYNC_API_KEY", ""),
+      zkSyncTestnet: vars.get("ZKSYNC_API_KEY", ""),
+      // For Immutable zkEVM testnet & mainnet
+      immutableZkEVM: vars.get("IMMUTABLEZKEVM_API_KEY", ""),
+      immutableZkEVMTestnet: vars.get("IMMUTABLEZKEVM_API_KEY", ""),
+      // For Abstract testnet & mainnet
+      abstract: vars.get("ABSTRACT_API_KEY", ""),
+      abstractTestnet: vars.get("ABSTRACT_API_KEY", ""),
+      // For Kaia mainnet
+      kaia: vars.get("OKLINK_API_KEY", ""),
+      // For ApeChain testnet & mainnet
+      apeChain: vars.get("APECHAIN_API_KEY", ""),
+      apeChainTestnet: vars.get("APECHAIN_API_KEY", ""),
     },
     customChains: [
       {
@@ -1182,6 +1329,14 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://api-holesky.etherscan.io/api",
           browserURL: "https://holesky.etherscan.io",
+        },
+      },
+      {
+        network: "hoodi",
+        chainId: 560048,
+        urls: {
+          apiURL: "https://api-hoodi.etherscan.io/api",
+          browserURL: "https://hoodi.etherscan.io",
         },
       },
       {
@@ -1296,6 +1451,22 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://api-sepolia.arbiscan.io/api",
           browserURL: "https://sepolia.arbiscan.io",
+        },
+      },
+      {
+        network: "avalanche",
+        chainId: 43114,
+        urls: {
+          apiURL: "https://api.snowscan.xyz/api",
+          browserURL: "https://snowscan.xyz",
+        },
+      },
+      {
+        network: "avalancheFujiTestnet",
+        chainId: 43113,
+        urls: {
+          apiURL: "https://api-testnet.snowscan.xyz/api",
+          browserURL: "https://testnet.snowscan.xyz",
         },
       },
       {
@@ -1624,7 +1795,7 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL:
             "https://www.oklink.com/api/v5/explorer/contract/verify-source-code-plugin/XLAYER",
-          browserURL: "https://www.oklink.com/xlayer",
+          browserURL: "https://www.oklink.com/x-layer",
         },
       },
       {
@@ -1633,7 +1804,7 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL:
             "https://www.oklink.com/api/v5/explorer/contract/verify-source-code-plugin/XLAYER_TESTNET",
-          browserURL: "https://www.oklink.com/xlayer-test",
+          browserURL: "https://www.oklink.com/x-layer-testnet",
         },
       },
       {
@@ -1818,32 +1989,32 @@ const config: HardhatUserConfig = {
         network: "worldChain",
         chainId: 480,
         urls: {
-          apiURL: "https://worldchain-mainnet.explorer.alchemy.com/api",
-          browserURL: "https://worldchain-mainnet.explorer.alchemy.com",
+          apiURL: "https://api.worldscan.org/api",
+          browserURL: "https://worldscan.org",
         },
       },
       {
         network: "worldChainTestnet",
         chainId: 4801,
         urls: {
-          apiURL: "https://worldchain-sepolia.explorer.alchemy.com/api",
-          browserURL: "https://worldchain-sepolia.explorer.alchemy.com",
+          apiURL: "https://api-sepolia.worldscan.org/api",
+          browserURL: "https://sepolia.worldscan.org",
         },
       },
       {
         network: "plume",
         chainId: 98866,
         urls: {
-          apiURL: "https://phoenix-explorer.plumenetwork.xyz/api",
-          browserURL: "https://phoenix-explorer.plumenetwork.xyz",
+          apiURL: "https://explorer.plume.org/api",
+          browserURL: "https://explorer.plume.org",
         },
       },
       {
         network: "plumeTestnet",
-        chainId: 98864,
+        chainId: 98867,
         urls: {
-          apiURL: "https://test-explorer.plumenetwork.xyz/api",
-          browserURL: "https://test-explorer.plumenetwork.xyz",
+          apiURL: "https://testnet-explorer.plume.org/api",
+          browserURL: "https://testnet-explorer.plume.org",
         },
       },
       {
@@ -1946,8 +2117,8 @@ const config: HardhatUserConfig = {
         network: "storyTestnet",
         chainId: 1315,
         urls: {
-          apiURL: "https://aeneid.storyscan.xyz/api",
-          browserURL: "https://aeneid.storyscan.xyz",
+          apiURL: "https://aeneid.storyscan.io/api",
+          browserURL: "https://aeneid.storyscan.io",
         },
       },
       {
@@ -2026,8 +2197,8 @@ const config: HardhatUserConfig = {
         network: "shapeTestnet",
         chainId: 11011,
         urls: {
-          apiURL: "https://explorer-sepolia.shape.network/api",
-          browserURL: "https://explorer-sepolia.shape.network",
+          apiURL: "https://sepolia.shapescan.xyz/api",
+          browserURL: "https://sepolia.shapescan.xyz",
         },
       },
       {
@@ -2104,11 +2275,10 @@ const config: HardhatUserConfig = {
       },
       {
         network: "berachainTestnet",
-        chainId: 80084,
+        chainId: 80069,
         urls: {
-          apiURL:
-            "https://api.routescan.io/v2/network/testnet/evm/80084/etherscan",
-          browserURL: "https://bartio.beratrail.io",
+          apiURL: "https://api-testnet.berascan.com/api",
+          browserURL: "https://testnet.berascan.com",
         },
       },
       {
@@ -2166,7 +2336,7 @@ const config: HardhatUserConfig = {
         chainId: 2911,
         urls: {
           apiURL: "https://explorer.hychain.com/api",
-          browserURL: "https://explorer.hychain.com/",
+          browserURL: "https://explorer.hychain.com",
         },
       },
       {
@@ -2175,6 +2345,112 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://testnet.explorer.hychain.com/api",
           browserURL: "https://testnet.explorer.hychain.com",
+        },
+      },
+      {
+        network: "zircuit",
+        chainId: 48900,
+        urls: {
+          apiURL: "https://explorer.zircuit.com/api/contractVerifyHardhat",
+          browserURL: "https://explorer.zircuit.com",
+        },
+      },
+      {
+        network: "zircuitTestnet",
+        chainId: 48898,
+        urls: {
+          apiURL:
+            "https://explorer.garfield-testnet.zircuit.com/api/contractVerifyHardhat",
+          browserURL: "https://explorer.garfield-testnet.zircuit.com",
+        },
+      },
+      {
+        network: "bitlayer",
+        chainId: 200901,
+        urls: {
+          apiURL: "https://api.btrscan.com/scan/api",
+          browserURL: "https://www.btrscan.com",
+        },
+      },
+      {
+        network: "bitlayerTestnet",
+        chainId: 200810,
+        urls: {
+          apiURL: "https://api-testnet.btrscan.com/scan/api",
+          browserURL: "https://testnet.btrscan.com",
+        },
+      },
+      {
+        network: "zkSync",
+        chainId: 324,
+        urls: {
+          apiURL: "https://api-era.zksync.network/api",
+          browserURL: "https://era.zksync.network",
+        },
+      },
+      {
+        network: "zkSyncTestnet",
+        chainId: 300,
+        urls: {
+          apiURL: "https://api-sepolia-era.zksync.network/api",
+          browserURL: "https://sepolia-era.zksync.network",
+        },
+      },
+      {
+        network: "immutableZkEVM",
+        chainId: 13371,
+        urls: {
+          apiURL: "https://explorer.immutable.com/api",
+          browserURL: "https://explorer.immutable.com",
+        },
+      },
+      {
+        network: "immutableZkEVMTestnet",
+        chainId: 13473,
+        urls: {
+          apiURL: "https://explorer.testnet.immutable.com/api",
+          browserURL: "https://explorer.testnet.immutable.com",
+        },
+      },
+      {
+        network: "abstract",
+        chainId: 2741,
+        urls: {
+          apiURL: "https://api.abscan.org/api",
+          browserURL: "https://abscan.org",
+        },
+      },
+      {
+        network: "abstractTestnet",
+        chainId: 11124,
+        urls: {
+          apiURL: "https://api-sepolia.abscan.org/api",
+          browserURL: "https://sepolia.abscan.org",
+        },
+      },
+      {
+        network: "kaia",
+        chainId: 8217,
+        urls: {
+          apiURL:
+            "https://www.oklink.com/api/v5/explorer/contract/verify-source-code-plugin/KAIA",
+          browserURL: "https://www.oklink.com/kaia",
+        },
+      },
+      {
+        network: "apeChain",
+        chainId: 33139,
+        urls: {
+          apiURL: "https://api.apescan.io/api",
+          browserURL: "https://apescan.io",
+        },
+      },
+      {
+        network: "apeChainTestnet",
+        chainId: 33111,
+        urls: {
+          apiURL: "https://api-curtis.apescan.io/api",
+          browserURL: "https://curtis.apescan.io",
         },
       },
     ],
