@@ -1,0 +1,33 @@
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="darkGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#64B5F6"/>
+      <stop offset="100%" style="stop-color:#42A5F5"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="30" cy="30" r="25" fill="url(#darkGradient)" opacity="0.15"/>
+  
+  <!-- CreateX icon - representing creation/factory -->
+  <g transform="translate(30, 30)">
+    <!-- Plus symbol for CREATE -->
+    <rect x="-2" y="-12" width="4" height="24" fill="url(#darkGradient)"/>
+    <rect x="-12" y="-2" width="24" height="4" fill="url(#darkGradient)"/>
+    <!-- X symbol overlay -->
+    <rect x="-12" y="-2" width="24" height="4" fill="url(#darkGradient)" transform="rotate(45)"/>
+    <rect x="-12" y="-2" width="24" height="4" fill="url(#darkGradient)" transform="rotate(-45)"/>
+  </g>
+  
+  <!-- CreateX text -->
+  <text x="65" y="22" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">
+    Create
+  </text>
+  <text x="120" y="22" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="url(#darkGradient)">
+    X
+  </text>
+  
+  <text x="65" y="38" font-family="Arial, sans-serif" font-size="10" fill="#B0BEC5">
+    Smart Contract Factory
+  </text>
+</svg>
